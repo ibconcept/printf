@@ -82,3 +82,4 @@ gcc -o printftest *.c tests/mains.c
 Authors
 William Maina
 Esther Mutiria
+This is printf readme
