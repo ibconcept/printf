@@ -1,43 +1,50 @@
+nclude "main.h"
+#include <limits.h>
 #include <stdio.h>
-#include <stdarg.h>
 
-int _printf(const char *format, ...) {
-    va_list args;
-    va_start(args, format);
+/**
+ * _printf - produces output according to a format
+ * @format: format string containing the characters and the specifiers
+ * Description: this function will call the get_print() function that will
+ * determine which printing function to call depending on the conversion
+ * specifiers contained into fmt
+ * Return: length of the formatted output string
+ */
+int _printf(const char *format, ...)
+{
+	int (*pfunc)(va_list, flags_t *);
+	const char *p;
+	va_list arguments;
+	flags_t flags = {0, 0, 0};
 
-    int count = 0;
+	register int count = 0;
 
-    for (; *format != '\0'; format++) {
-        if (*format == '%' && *(format + 1) != '\0') {
-            format++;
-            switch (*format) {
-                case 'c':
-                    count += putchar(va_arg(args, int));
-                    break;
-                case 's':
-                    count += printf("%s", va_arg(args, char *));
-                    break;
-                case '%':
-                    count += putchar('%');
-                    break;
-                default:
-                    putchar('%');
-                    count++;
-                    break;
-            }
-        } else {
-            putchar(*format);
-            count++;
-        }
-    }
+	va_start(arguments, format);
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	for (p = format; *p; p++)
+	{
+		if (*p == '%')
+		{
+			p++;
+			if (*p == '%')
+			{
+				count += _putchar('%');
+				continue;
+			}
 
-    va_end(args);
-
-    return count;
+			while (get_flag(*p, &flags))
+				p++;
+			pfunc = get_print(*p);
+			count += (pfunc)
+				? pfunc(arguments, &flags)
+				: _printf("%%%c", *p);
+		} else
+			count += _putchar(*p);
+	}
+	_putchar(-1);
+	va_end(arguments);
+	return (count);
 }
-
-int main() {
-    _printf("This is a simple %s example. The character is %c and this is a percent sign: %%\n", "printf", 'A');
-    return 0;
-}
-
