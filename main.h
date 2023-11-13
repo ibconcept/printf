@@ -37,7 +37,7 @@ int print_i(va_list args);
 int print_d(va_list args);
 int _strlen(char *s);
 int rev_string(char *s);
-int print_%(void);
+int print_37(void);
 int print_c(va_list var);
 int s_print(va_list var);
 int _putchar(char c);

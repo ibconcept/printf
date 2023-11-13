@@ -27,3 +27,4 @@ int print_s(va_list var)
 			_putchar(str[s]);
 		return (length);
 	}
+}

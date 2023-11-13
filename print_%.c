@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * print_% - prints % sign
+ * print_37 - prints % sign
  * Return: integer
  */
-int print_%(void)
+int print_37(void)
 {
 	_putchar(37);
 	return (1);
