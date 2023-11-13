@@ -17,8 +17,7 @@ typedef struct format
 {
 	char *ph;
 	int (*function)();
-}
-convert;
+} convert;
 
 int *_strcpy(char *dest, char *src);
 int print_pointer(va_list val);
@@ -38,8 +37,8 @@ int print_d(va_list args);
 int _strlen(char *s);
 int rev_string(char *s);
 int print_37(void);
-int print_c(va_list var);
-int s_print(va_list var);
+int print_c(va_list val);
+int print_s(va_list val);
 int _putchar(char c);
 int _printf(const char *format, ...);
 
