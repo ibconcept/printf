@@ -1,11 +1,8 @@
 # printf
-Create your own printf function  
 0X11. C - print
 _printf()
 Prints text to terminal based on a given format string to standard output. Mimicking glibc printf.
-
 Syntax: _printf(<format string>, args...)
-
 Current features
 Implemented specifiers:
 
@@ -82,4 +79,4 @@ gcc -o printftest *.c tests/mains.c
 Authors
 William Maina
 Esther Mutiria
-This is printf readme
+
