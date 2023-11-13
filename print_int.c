@@ -60,6 +60,7 @@ int print_d(va_list args)
 	num = n;
 
 
+
 	if (last < 0)
 	{
 		_putchar('-');
@@ -86,7 +87,6 @@ int print_d(va_list args)
 		}
 	}
 	_putchar(last + '0');
-
 
 	return (i);
 }
