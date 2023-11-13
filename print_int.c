@@ -59,6 +59,8 @@ int print_d(va_list args)
 	n = n / 10;
 	num = n;
 
+
+
 	if (last < 0)
 	{
 		_putchar('-');
